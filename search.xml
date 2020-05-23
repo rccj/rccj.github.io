@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>test</title>
+    <url>/2020/05/23/test/</url>
+    <content><![CDATA[]]></content>
+      <tags>
+        <tag>test post</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2020/03/23/hello-world/</url>
     <content><![CDATA[<h1 id="明天再更新"><a href="#明天再更新" class="headerlink" title="明天再更新"></a>明天再更新</h1><p>ㄎㄎ </p>
