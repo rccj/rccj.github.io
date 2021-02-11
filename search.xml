@@ -3,7 +3,7 @@
   <entry>
     <title>var, let, const 多基本的東西</title>
     <url>/2021/02/11/002/</url>
-    <content><![CDATA[<h1 id="var-let-const-多基本的東西"><a href="#var-let-const-多基本的東西" class="headerlink" title="var, let, const 多基本的東西"></a>var, let, const 多基本的東西</h1><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>距上次更新已經八個多月，除了工作上學到的新東西，好像沒有當初自學時的那股衝勁與熱情，自學期間的我，每天至少六小時以上，有時一天只要吃一餐，就怕思緒被打斷只為了解一個Bug，持續了半年。現在我還是覺得前端的一切很好玩，但怎麼說呢，<br>.<br>.<br>.</p>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>距上次更新已經八個多月，除了工作上學到的新東西，好像沒有當初自學時的那股衝勁與熱情，自學期間的我，每天至少六小時以上，有時一天只要吃一餐，就怕思緒被打斷只為了解一個Bug，持續了半年。現在我還是覺得前端的一切很好玩，但怎麼說呢，<br>.<br>.<br>.</p>
 <a id="more"></a>
 <p><img src="https://raw.githubusercontent.com/rccj/images/master/blog/002/1579416003413.jpg" alt="我就懶"><br>(圖片來源: <a href="https://memes.tw/wtf/133544" target="_blank" rel="noopener">https://memes.tw/wtf/133544</a>)</p>
 <p>有聽人說過，你知道五六年前是沒有前端工程師這職位的，技術變更很快，前端是學不完的，如果只會在原地踏步，三五年後可能也無法生存。<br>所以我不想耍廢，但也不知道要寫什麼，就從些基本的開始，累積點東西吧!</p>
