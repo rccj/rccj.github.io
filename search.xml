@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>002</title>
-    <url>/2021/02/10/002/</url>
-    <content><![CDATA[<hr>
-<p>title: var,let,const多基本的東西<br>date: 2021-02-11 13:45:00<br>categories: </p>
-<ul>
-<li>JavaScript基本功<br>tags: </li>
-<li>每個禮拜都要有筆記</li>
-</ul>
-<hr>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>距上次更新已經八個多月，除了工作上學到的新東西，好像沒有當初自學時的那股衝勁與熱情，自學期間的我，每天至少六小時以上，有時一天只要吃一餐，就怕思緒被打斷只為了解一個Bug，持續了半年。現在我還是覺得前端的一切很好玩，但怎麼說呢，<br>.<br>.<br>.</p>
+    <title>2020非本科轉職前端工程師【心路歷程】</title>
+    <url>/2020/05/29/002/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>距上次更新已經八個多月，除了工作上學到的新東西，好像沒有當初自學時的那股衝勁與熱情，自學期間的我，每天至少六小時以上，有時一天只要吃一餐，就怕思緒被打斷只為了解一個Bug，持續了半年。現在我還是覺得前端的一切很好玩，但怎麼說呢，<br>.<br>.<br>.</p>
 <a id="more"></a>
 <p><img src="https://raw.githubusercontent.com/rccj/images/master/blog/002/1579416003413.jpg" alt="我就懶"><br>(圖片來源: <a href="https://memes.tw/wtf/133544" target="_blank" rel="noopener">https://memes.tw/wtf/133544</a>)</p>
 <p>有聽人說過，你知道五六年前是沒有前端工程師這職位的，技術變更很快，前端是學不完的，如果只會在原地踏步，三五年後可能也無法生存。<br>所以我不想耍廢，但也不知道要寫什麼，就從些基本的開始，累積點東西吧!</p>
@@ -51,6 +44,14 @@
 <p>想看更詳細的解說可以點擊下方參考資料。</p>
 <h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://cythilya.github.io/2016/10/28/es6-let-const-block-level-scope/" target="_blank" rel="noopener">Summer。桑莫。夏天：ES6: let, const, Block-Level Scope</a><br><a href="https://eddychang.me/es6-tdz/" target="_blank" rel="noopener">EddyChang：理解ES6中的暫時死區(TDZ)</a><br><a href="https://blog.csdn.net/u013263917/article/details/106673193" target="_blank" rel="noopener">坤小：var与let区别-详解块级作用域与局部作用域</a><br><a href="https://wcc723.github.io/javascript/2017/12/20/javascript-es6-let-const/" target="_blank" rel="noopener">卡斯伯：ES6 開始的新生活 let, const</a></p>
 ]]></content>
+      <categories>
+        <category>轉職心得</category>
+      </categories>
+      <tags>
+        <tag>2020</tag>
+        <tag>心得</tag>
+        <tag>前端工程師</tag>
+      </tags>
   </entry>
   <entry>
     <title>2020非本科轉職前端工程師【心路歷程】</title>
