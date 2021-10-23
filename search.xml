@@ -62,11 +62,8 @@
 <h3 id="為什麼不用"><a href="#為什麼不用" class="headerlink" title="為什麼不用||"></a>為什麼不用||</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> adventurer = &#123;</span><br><span class="line">  name: <span class="string">'Alice'</span>,</span><br><span class="line">  cat: &#123;</span><br><span class="line">    name: <span class="string">''</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> catName = adventurer.cat?.name ?? <span class="string">'No name'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(catName);</span><br><span class="line"><span class="comment">// ''</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> catName2 = adventurer.cat?.name || <span class="string">'No name'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(catName2);</span><br><span class="line"><span class="comment">// 'No name'</span></span><br></pre></td></tr></table></figure>
 <p>完全是看自己需求，看前面提到的，如果你需要如果找到的值，<br>只要是 null、 0、 NaN、 空字串 (“”)、undefined可以轉換為false的運算式，就往下的話，就可以用||。</p>
 <p>在??中，0 或是 “”，都會被保留。</p>
-<!-- # 小結
-
-我只寫些常用且比較直覺關於判斷的東西，歡迎批評指教。
-
-## 參考資料
+<h1 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h1><p>我只寫些常用且比較直覺關於判斷的東西，歡迎批評指教。</p>
+<!-- ## 參考資料
 
 [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#assignment_operators) -->]]></content>
       <categories>
