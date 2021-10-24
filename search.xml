@@ -68,7 +68,8 @@
 <h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#assignment_operators" target="_blank" rel="noopener">MDN Web Docs</a></p>
 ]]></content>
       <categories>
-        <category>JavaScript基本功</category>
+        <category>JavaScript</category>
+        <category>JS基本功</category>
       </categories>
       <tags>
         <tag>筆記</tag>
@@ -119,7 +120,8 @@
 <h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://cythilya.github.io/2016/10/28/es6-let-const-block-level-scope/" target="_blank" rel="noopener">Summer。桑莫。夏天：ES6: let, const, Block-Level Scope</a><br><a href="https://eddychang.me/es6-tdz/" target="_blank" rel="noopener">EddyChang：理解ES6中的暫時死區(TDZ)</a><br><a href="https://blog.csdn.net/u013263917/article/details/106673193" target="_blank" rel="noopener">坤小：var与let区别-详解块级作用域与局部作用域</a><br><a href="https://wcc723.github.io/javascript/2017/12/20/javascript-es6-let-const/" target="_blank" rel="noopener">卡斯伯：ES6 開始的新生活 let, const</a></p>
 ]]></content>
       <categories>
-        <category>JavaScript基本功</category>
+        <category>JavaScript</category>
+        <category>JS基本功</category>
       </categories>
       <tags>
         <tag>筆記</tag>
