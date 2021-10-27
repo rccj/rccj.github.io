@@ -3,7 +3,9 @@
   <entry>
     <title>Markdown 常用語法</title>
     <url>/2021/10/27/markdown/</url>
-    <content><![CDATA[<img src="/Users/romam/Desktop/images/blog/markdown.png" alt="markdown" style="zoom:50%;" />
+    <content><![CDATA[<img src="https://raw.githubusercontent.com/rccj/images/master/blog/markdown.png" alt="markdown" style="zoom:50%;" />
+
+<a id="more"></a>
 
 <h1 id="標題"><a href="#標題" class="headerlink" title="標題"></a>標題</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># h1</span><br><span class="line">## h2</span><br><span class="line">### h3</span><br><span class="line">#### h4</span><br><span class="line">##### h5</span><br><span class="line">###### h6</span><br></pre></td></tr></table></figure>
 
