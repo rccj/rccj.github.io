@@ -9,25 +9,18 @@
 <a id="more"></a>
 
 <h1 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h1><ul>
-<li><p><strong>超文本傳輸協定</strong> 英語：<strong>H</strong>yper<strong>T</strong>ext <strong>T</strong>ransfer <strong>P</strong>rotocol，縮寫：<strong>HTTP</strong>。</p>
-</li>
-<li><p>電腦間在網路上溝通的一種方式，主要用在網頁上。</p>
-</li>
+<li><strong>超文本傳輸協定</strong> 英語：<strong>H</strong>yper<strong>T</strong>ext <strong>T</strong>ransfer <strong>P</strong>rotocol，縮寫：<strong>HTTP</strong>。</li>
+<li>電腦間在網路上溝通的一種方式，主要用在網頁上。</li>
 </ul>
 <h1 id="電腦間的溝通"><a href="#電腦間的溝通" class="headerlink" title="電腦間的溝通"></a>電腦間的溝通</h1><p><img src="https://raw.githubusercontent.com/rccj/images/master/blog/http-intro-002.gif" alt="http-intor-002"></p>
-<p>我們最常看到HTTP的地方就是的網址。</p>
-<p>當我們打完網址按下Enter後，就開始電腦間的溝通…</p>
+<p>我們最常看到HTTP的地方就是的網址。<br>當我們打完網址按下Enter後，就開始電腦間的溝通…</p>
 <p><img src="https://raw.githubusercontent.com/rccj/images/master/blog/http-intro-001.png" alt="http-intor-001"></p>
 <ol>
-<li><p>輸入網址 （<a href="https://www.google.com/）" target="_blank" rel="noopener">https://www.google.com/）</a></p>
-<p>瀏覽器會解析 https://之後的東西 =&gt; <strong><a href="http://www.google.com" target="_blank" rel="noopener">www.google.com</a></strong> ，找出他的IP位置在哪，去做訪問</p>
-<img src="/Users/romam/Desktop/images/blog/http-intro-003.png" alt="http-intro-003" style="zoom:50%;" />
+<li><p>輸入網址 （<a href="https://www.google.com/）" target="_blank" rel="noopener">https://www.google.com/）</a><br>瀏覽器會解析 https://之後的東西 =&gt; <strong><a href="http://www.google.com" target="_blank" rel="noopener">www.google.com</a></strong> ，找出他的IP位置在哪，去做訪問</p>
 </li>
-<li><p>發出請求 Request </p>
-<p>告訴伺服器說，我到這個電腦(伺服器)，請把的檔案回傳給我們</p>
+<li><p>發出請求 Request<br>告訴伺服器說，我到這個電腦(伺服器)，請把的檔案回傳給我們</p>
 </li>
-<li><p>給予回應 Response （顯示頁面）</p>
-<p>解析之後，就會跑出我們看到的畫面</p>
+<li><p>給予回應 Response （顯示頁面）<br>解析之後，就會跑出我們看到的畫面</p>
 </li>
 </ol>
 <p>這就是電腦跟電腦(伺服器)在網路上溝通做的事情，<strong>請求</strong>與<strong>回應</strong></p>
@@ -40,12 +33,9 @@
 <p>這個<strong>請求</strong>可能長這樣 <a href="http://api.facebook.com/postsomething" target="_blank" rel="noopener">http://api.facebook.com/postsomething</a></p>
 <p>找到了地址，告訴他說要做什麼事情</p>
 <ul>
-<li><p>請求 =&gt; Loading (發出請求給伺服器，我要新增貼文)</p>
-</li>
-<li><p>回應 =&gt; 新增貼文成功 (顯示最新的貼文)</p>
-</li>
-<li><p>或是 =&gt; 新增貼文失敗 </p>
-</li>
+<li>請求 =&gt; Loading (發出請求給伺服器，我要新增貼文)</li>
+<li>回應 =&gt; 新增貼文成功 (顯示最新的貼文)</li>
+<li>或是 =&gt; 新增貼文失敗 </li>
 </ul>
 <blockquote>
 <p>在網頁的所有操作都有可能用到HTTP做溝通</p>
@@ -86,46 +76,29 @@
 </tr>
 </tbody></table>
 <p>根據請求目的地不同會有不同的方法</p>
-<h1 id="溝通格式"><a href="#溝通格式" class="headerlink" title="溝通格式"></a>溝通格式</h1><p>HTTP溝通就像是寫信、寄信，也存在著溝通的格式。</p>
-<p>必須照規矩來才讓電腦順利溝通。</p>
+<h1 id="溝通格式"><a href="#溝通格式" class="headerlink" title="溝通格式"></a>溝通格式</h1><p>HTTP溝通就像是寫信、寄信，也存在著溝通的格式。<br>必須照規矩來才讓電腦順利溝通。</p>
 <p>以下以買東西舉例</p>
 <h2 id="請求-request-回應-response"><a href="#請求-request-回應-response" class="headerlink" title="請求 request 回應 response"></a>請求 request 回應 response</h2><p>想像成寫信，會分成大概三個區塊</p>
 <ul>
-<li><p>start line HTTP 版本和方法跟網址路徑</p>
-<p>POST /card HTTP/1.1</p>
+<li><p>start line HTTP 版本和方法跟網址路徑<br>POST /card HTTP/1.1</p>
 </li>
-</ul>
-<ul>
-<li><p>header    關於請求/回應的資訊 ex: 哪裡發送的、資料類型</p>
-<p>Host: api.shop.com</p>
-<p>Uesr-Agent: Mozolla/5.0 (windows…) Chrome</p>
-<p>Accept: text/plain</p>
-<p>Content-Type: text/plain</p>
-<p>Content-Length: 43</p>
+<li><p>header    關於請求/回應的資訊 ex: 哪裡發送的、資料類型<br>Host: api.shop.com<br>Uesr-Agent: Mozolla/5.0 (windows…) Chrome<br>Accept: text/plain<br>Content-Type: text/plain<br>Content-Length: 43</p>
 </li>
-</ul>
-<ul>
-<li><p>body       發送/回應的內容</p>
-<p>{“card”: 1234567890, “total_price”: 1000}</p>
+<li><p>body       發送/回應的內容<br>{“card”: 1234567890, “total_price”: 1000}</p>
 </li>
 </ul>
 <h2 id="HTTP-Status-Code"><a href="#HTTP-Status-Code" class="headerlink" title="HTTP Status Code"></a>HTTP Status Code</h2><p>當發出請求後，在回應得內容中，包含狀態碼</p>
 <p>狀態碼不同數字區間代表者不同意思</p>
 <ul>
-<li><p>1xx : 訊息</p>
-<p>請求已被伺服器接收，繼續處理</p>
+<li><p>1xx : 訊息<br>請求已被伺服器接收，繼續處理</p>
 </li>
-<li><p>2xx : 成功</p>
-<p>請求已成功被伺服器接收、理解、並接受</p>
+<li><p>2xx : 成功<br>請求已成功被伺服器接收、理解、並接受</p>
 </li>
-<li><p>3xx : 重新導向 </p>
-<p>需要後續操作才能完成這一請求 （重新定向 轉址）</p>
+<li><p>3xx : 重新導向<br>需要後續操作才能完成這一請求 （重新定向 轉址）</p>
 </li>
-<li><p>4xx : 客戶端錯誤</p>
-<p>請求含有詞法錯誤或者無法被執行</p>
+<li><p>4xx : 客戶端錯誤<br>請求含有詞法錯誤或者無法被執行</p>
 </li>
-<li><p>5xx : 伺服器錯誤 </p>
-<p>伺服器在處理某個正確請求時發生錯誤</p>
+<li><p>5xx : 伺服器錯誤<br>伺服器在處理某個正確請求時發生錯誤</p>
 </li>
 </ul>
 <p>你可能有看過類似的畫面，經典的404。</p>
@@ -142,8 +115,7 @@
 <h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><ul>
 <li><p><a href="https://zh.wikipedia.org/wiki/%E8%B6%85%E6%96%87%E6%9C%AC%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE" target="_blank" rel="noopener">維基百科: 超文本傳輸協定</a></p>
 </li>
-<li><p><a href="https://www.youtube.com/watch?v=-tRp1IOlKkI&t=162s" target="_blank" rel="noopener">GrandmaCan -我阿嬤都會: 什麼是 HTTP、HTTPS </a></p>
-<p>主講者小白講的淺顯易懂，非常適合剛入門的人</p>
+<li><p><a href="https://www.youtube.com/watch?v=-tRp1IOlKkI&t=162s" target="_blank" rel="noopener">GrandmaCan -我阿嬤都會: 什麼是 HTTP、HTTPS </a><br>主講者小白講的淺顯易懂，非常適合剛入門的人</p>
 </li>
 </ul>
 ]]></content>
