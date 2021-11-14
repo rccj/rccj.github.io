@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://rccj.github.io/2021/10/23/conditional-statements/</loc>
+    
+    <lastmod>2021-11-14T05:17:56.176Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://rccj.github.io/2021/02/11/variable-declaration/</loc>
+    
+    <lastmod>2021-11-14T05:17:44.590Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://rccj.github.io/2021/10/28/http-intro/</loc>
     
-    <lastmod>2021-10-28T15:07:03.898Z</lastmod>
+    <lastmod>2021-11-14T05:16:28.484Z</lastmod>
     
   </url>
   
@@ -12,20 +26,6 @@
     <loc>https://rccj.github.io/2021/10/27/markdown/</loc>
     
     <lastmod>2021-10-27T14:38:58.544Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://rccj.github.io/2021/02/11/variable-declaration/</loc>
-    
-    <lastmod>2021-10-24T07:44:16.373Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://rccj.github.io/2021/10/23/conditional-statements/</loc>
-    
-    <lastmod>2021-10-24T07:44:08.043Z</lastmod>
     
   </url>
   
