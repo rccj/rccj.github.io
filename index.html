@@ -307,6 +307,280 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://rccj.github.io/2021/11/14/prototype-map/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Roman Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/rccj/images/master/sources/avatar.jpg?token=AOLGL2JISRTDXUUPSA7UJ4K6P4BPK">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Roman's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/11/14/prototype-map/" itemprop="url">原型Prototype: [].map的map是哪來的?</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2021-11-14T13:22:00+08:00">
+                2021-11-14
+              </time>
+            
+
+            
+
+            
+          </span>
+          
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp; 更新於
+              <time itemprop="dateUpdated" datetime="2021-11-14T13:29:07+08:00" content="2021-11-14">
+                2021-11-14
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/" itemprop="url" rel="index">
+                    <span itemprop="name">奇怪部分</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/11/14/prototype-map/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2021/11/14/prototype-map/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <img src="https://raw.githubusercontent.com/rccj/images/master/blog/prototype-00.png" alt="prototype-01" style="zoom:50%;" />
+
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>以前剛接觸到陣列map的時候，覺得很開心不用一直寫for迴圈，但我師父問起：你知道怎麼會有這個嗎?<br>然後就開始解釋起原型鏈這可怕的東西了…<br>在這裡只會提到原型繼承的概念，並不會挖太深。</p>
+<h1 id="先說結論"><a href="#先說結論" class="headerlink" title="先說結論"></a>先說結論</h1><p>在創立陣列時，它指向的原型，已經把所有陣列的方法，透過原型鏈繼承傳給它，即使在陣列本身看不到，但在他的骨子裡，沿著它的根尋找，就存在著這些方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var arr &#x3D; [1,2,3];</span><br><span class="line"></span><br><span class="line">arr.map(x &#x3D;&gt; x + 1) &#x2F;&#x2F; [2,3,4]</span><br><span class="line">arr.filter(x &#x3D;&gt; x &gt; 1) &#x2F;&#x2F; [2,3]</span><br><span class="line">arr.length &#x2F;&#x2F; 3</span><br></pre></td></tr></table></figure>
+
+<img src="https://raw.githubusercontent.com/rccj/images/master/blog/prototype-01.png" alt="prototype-01" style="zoom:50%;" />
+
+<p>不只是map，還有許多方便的方法，在建立物件的時候，就跟著<strong>繼承</strong>下來了</p>
+<h1 id="函式建構子-Function-constructor"><a href="#函式建構子-Function-constructor" class="headerlink" title="函式建構子 Function constructor"></a>函式建構子 Function constructor</h1><p>從建立一個物件開始吧！</p>
+<p>如果我今天要建造一個人？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var person &#x3D; &#123;</span><br><span class="line">  name: &#39;Roman&#39;,</span><br><span class="line">  description: &#39;Cool&#39;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>用<code>物件實體法</code>也是最主流的方式，宣告一個人很酷的人做Roman。</p>
+<p>但如果今天我需要快速得到很多不同名字的人呢?</p>
+<h2 id="函式回傳物件"><a href="#函式回傳物件" class="headerlink" title="函式回傳物件"></a>函式回傳物件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function getPerson (name, description) &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">    name: name,</span><br><span class="line">    description: description</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var roman &#x3D; getPerson(&#39;Roman&#39;, &#39;Cool&#39;);</span><br><span class="line">var corgi &#x3D; getPerson(&#39;Corgi&#39;, &#39;Cute&#39;);</span><br></pre></td></tr></table></figure>
+
+<img src="https://raw.githubusercontent.com/rccj/images/master/blog/prototype-02.png" alt="prototype-02" style="zoom:50%;" />
+
+<p>目前為止沒什麼問題，但有點囉嗦。如果早知道要建立物件的話，又何必要建立新物件再回傳呢？也為了往後其他目的，JavaScript 透過函式建構子提供了方便的捷徑。</p>
+<h2 id="函式建構子"><a href="#函式建構子" class="headerlink" title="函式建構子"></a>函式建構子</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function Person (name, description) &#123;</span><br><span class="line">  this.name &#x3D; name;</span><br><span class="line">  this.description &#x3D; description;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var roman &#x3D; new Person(&#39;Roman&#39;, &#39;Cool&#39;);</span><br><span class="line">var corgi &#x3D; new Person(&#39;Corgi&#39;, &#39;Cute&#39;);</span><br></pre></td></tr></table></figure>
+
+<img src="https://raw.githubusercontent.com/rccj/images/master/blog/prototype-02.png" alt="prototype-02" style="zoom:50%;" />
+
+<blockquote>
+<p>函式建構子名稱往往以大寫起頭，可方便你在程式碼中找出函式建構子或誤用。</p>
+</blockquote>
+<p>一個是呼叫執行函式並將結果指向變數roman，一個是用new建立物件並指向變數roman;</p>
+<h2 id="當使用new時背後發生什麼事"><a href="#當使用new時背後發生什麼事" class="headerlink" title="當使用new時背後發生什麼事 ?"></a>當使用new時背後發生什麼事 ?</h2><ol>
+<li>JS直譯器<code>syantax parsor</code>會先建立一個空物件{}。</li>
+<li>接著呼叫new後面的函式建構子，當函式被呼叫時，創造函式執行環境 <code>Excusion</code> <code>content</code>，<code>this</code>關鍵字也隨之被創造出來。</li>
+<li>由於<code>this</code>被寫在<code>new</code>的後面，JS直譯器知道你在用<code>函式建構子</code>創造物件，因此<code>this</code>指向了剛被創造出來的空物件{}，所以<code>函式建構子</code>內的<code>this.xxx</code>被創造在這個空物件中。</li>
+</ol>
+<blockquote>
+<p>new會改變this的對象(原指向全域物件)</p>
+</blockquote>
+<h2 id="在函式建構子中-return"><a href="#在函式建構子中-return" class="headerlink" title="在函式建構子中 return"></a>在函式建構子中 return</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function Person (name, description) &#123;</span><br><span class="line">    this.name &#x3D; name;</span><br><span class="line">    this.description &#x3D; description;</span><br><span class="line">    return &#39;this is return value&#39;;</span><br><span class="line">&#125;</span><br><span class="line">var roman &#x3D; new Person(&#39;Roman&#39;, &#39;Cool&#39;);</span><br></pre></td></tr></table></figure>
+
+<img src="https://raw.githubusercontent.com/rccj/images/master/blog/prototype-03.png" alt="prototype-03" style="zoom:50%;" />
+
+<p>回傳字串不會受影響</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function Person (name, description) &#123;</span><br><span class="line">    this.name &#x3D; name;</span><br><span class="line">    this.description &#x3D; description;</span><br><span class="line">    return &#123;name: &#39;No corgi anymore&#39;&#125;;</span><br><span class="line">&#125;</span><br><span class="line">var corgi &#x3D; new Person(&#39;Corgi&#39;, &#39;Cute&#39;);</span><br></pre></td></tr></table></figure>
+
+<img src="https://raw.githubusercontent.com/rccj/images/master/blog/prototype-04.png" alt="prototype-04" style="zoom:50%;" />
+
+<p>回傳物件會把創立的新物件覆蓋掉</p>
+<h2 id="別忘記new"><a href="#別忘記new" class="headerlink" title="別忘記new"></a>別忘記new</h2><p>若使用使用函數建構子不用new，就會變成一般的呼叫函式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var roman &#x3D; new Person(&#39;Roman&#39;, &#39;Cool&#39;);</span><br><span class="line">var roman &#x3D; Person(&#39;Roman&#39;, &#39;Cool&#39;);</span><br></pre></td></tr></table></figure>
+
+<h1 id="Prototype-原型"><a href="#Prototype-原型" class="headerlink" title="Prototype 原型"></a>Prototype 原型</h1><h2 id="重複用的函式"><a href="#重複用的函式" class="headerlink" title="重複用的函式"></a>重複用的函式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function Person (name, description) &#123;</span><br><span class="line">  this.name &#x3D; name;</span><br><span class="line">  this.description &#x3D; description;</span><br><span class="line">  this.greeting &#x3D; function()&#123;</span><br><span class="line">     return &quot;Hi, I&#39;m &quot; + this.name;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var roman &#x3D; new Person(&#39;Roman&#39;, &#39;Cool&#39;);</span><br><span class="line">var corgi &#x3D; new Person(&#39;Corgi&#39;, &#39;Cute&#39;);</span><br></pre></td></tr></table></figure>
+
+<img src="https://raw.githubusercontent.com/rccj/images/master/blog/prototype-05.png" alt="prototype-06" style="zoom:50%;" />
+
+<p>我加了一個打招呼的方法，在新創建的物件都使用這個方法</p>
+<p>假設每個新創立的物件都會用到<code>greeting</code></p>
+<img src="https://raw.githubusercontent.com/rccj/images/master/blog/prototype-06.png" alt="prototype-06" style="zoom:50%;" />
+
+<p>從圖中可以看到，看起來是同樣的函示，但事實是greeting分別存在兩個新建立的物件。</p>
+<img src="https://raw.githubusercontent.com/rccj/images/master/blog/prototype-07.png" alt="prototype-07" style="zoom:50%;" />
+
+<blockquote>
+<p>說明如果我建立10個新物件，就會多10個存放greeting的空間。</p>
+</blockquote>
+<blockquote>
+<p>如果不是每個新物件都需要用到，就等於某些物件多建立了<code>greeting</code></p>
+</blockquote>
+<p>浪費空間耗能。</p>
+<h2 id="放在工具包（繼承）"><a href="#放在工具包（繼承）" class="headerlink" title="放在工具包（繼承）"></a>放在工具包（繼承）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function Person (name, description) &#123;</span><br><span class="line">  this.name &#x3D; name;</span><br><span class="line">  this.description &#x3D; description;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Person.prototype.greeting &#x3D; function()&#123;</span><br><span class="line">  return &quot;Hi, I&#39;m &quot; + this.name;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var roman &#x3D; new Person(&#39;Roman&#39;, &#39;Cool&#39;);</span><br><span class="line">var corgi &#x3D; new Person(&#39;Corgi&#39;, &#39;Cute&#39;);</span><br></pre></td></tr></table></figure>
+
+<img src="https://raw.githubusercontent.com/rccj/images/master/blog/prototype-05.png" alt="prototype-05" style="zoom:50%;" />
+
+<p><code>Person</code>的<code>prototype</code>屬性，可以把它想成是<code>Person</code>的工具包，每個function都有的屬性，被創立出來時是空的，可以使用<code>prototype</code>幫這個物件（工具包）擴充。</p>
+<img src="https://github.com/rccj/images/blob/master/blog/prototype-08.png?raw=true" alt="prototype-08.png" style="zoom:50%;" />
+
+<p>而用<code>new</code>創建新的<code>Person</code>時，會把它繼承過去，物件本體雖然沒有這個<code>greeting</code>，但沿著工具包找是可以取用到的。</p>
+<img src="https://github.com/rccj/images/blob/master/blog/prototype-09.png?raw=true" alt="prototype-09.png" style="zoom:50%;" />
+
+<blockquote>
+<p>兩個物件的<code>greeting</code>都指向同一個參考物件，記憶體上是同一個</p>
+</blockquote>
+<h1 id="所以說那個map呢？"><a href="#所以說那個map呢？" class="headerlink" title="所以說那個map呢？"></a>所以說那個map呢？</h1><p>有了剛剛那些概念，現在談談當我們宣告一個陣列時，發生的事情</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var arr &#x3D; [1,2,3];</span><br></pre></td></tr></table></figure>
+
+<p>當我今天宣告一個陣列時，其實就把<code>當使用new時背後發生什麼事 ?</code>提到的事情做完了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var arr &#x3D; [1,2,3];</span><br><span class="line">&#x2F;&#x2F; 等於下面這個</span><br><span class="line">var arr &#x3D; new Array(1,2,3);</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>宣告創造一個新的空陣列物件</li>
+<li>將建構子的this指向過去</li>
+<li>把工具包也傳承下去（但不存在陣列本體）</li>
+</ol>
+<p>所以就有了開頭這張圖</p>
+<img src="https://raw.githubusercontent.com/rccj/images/master/blog/prototype-01.png" alt="prototype-01" style="zoom:50%;" />
+
+<blockquote>
+<p>陣列也算是物件的一種’</p>
+</blockquote>
+<img src="https://raw.githubusercontent.com/rccj/images/master/blog/prototype-09.png" alt="prototype-09" style="zoom:50%;" />
+
+<p>驗證</p>
+<h1 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h1><p>這篇本來是想把原型的都寫完，但秉持著每篇文章儘可能淺顯易懂，儘可能不要有太多的延伸討論，不要偏離標題太多，先簡述概念，之後在陸續把原型的理論補齊。</p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://maxleebk.com/2020/07/25/prototype/" target="_blank" rel="noopener">Max’s Blog: 面試官最愛考的 JS 原型鏈</a><br><a href="https://ithelp.ithome.com.tw/articles/10194350" target="_blank" rel="noopener">SimonAllen: 古典與原型繼承、瞭解原型</a><br><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Inheritance_and_the_prototype_chain" target="_blank" rel="noopener">MDN: 繼承與原型鏈</a><br><a href="https://cythilya.github.io/2018/10/26/prototype/" target="_blank" rel="noopener">Summer: 你懂 JavaScript 嗎？#19 原型（Prototype）</a><br><a href="https://blog.techbridge.cc/2017/04/22/javascript-prototype/" target="_blank" rel="noopener">huli: 該來理解 JavaScript 的原型鍊了</a><br><a href="https://pjchender.blogspot.com/2016/06/javascriptfunction-constructornew.html" target="_blank" rel="noopener">[筆記] 談談 JavaScript 中的 function constructor 和關鍵字 new</a><br><a href="https://developer.mozilla.org/zh-TW/docs/Learn/JavaScript/Objects/Object-oriented_JS" target="_blank" rel="noopener">MDN: 初學者應知道的物件導向 JavaScript</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://rccj.github.io/2021/10/28/http-intro/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1362,7 +1636,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -1384,7 +1658,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">標籤</span>
                 </a>
               </div>
