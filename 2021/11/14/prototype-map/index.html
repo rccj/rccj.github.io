@@ -82,12 +82,12 @@
 
 
 
-<meta name="description" content="前言以前剛接觸到陣列map的時候，覺得很開心不用一直寫for迴圈，但我師父問起：你知道怎麼會有這個嗎?然後就開始解釋起原型鏈這可怕的東西了…在這裡只會提到原型繼承的概念，並不會挖太深。 先說結論在創立陣列時，它指向的原型，已經把所有陣列的方法，透過原型鏈繼承傳給它，即使在陣列本身看不到，但在他的骨子裡，沿著它的根尋找，就存在著這些方法 12345var arr &#x3D; [1,2,3];a">
+<meta name="description" content="前言以前剛接觸到陣列map的時候，覺得很開心不用一直寫for迴圈，但我師父問起：你知道怎麼會有這個嗎?然後就開始解釋起原型鏈這可怕的東西了…在這裡只會提到原型繼承的概念，並不會挖太深。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="原型Prototype: [].map的map是哪來的?">
 <meta property="og:url" content="https://rccj.github.io/2021/11/14/prototype-map/index.html">
 <meta property="og:site_name" content="Roman&#39;s Blog">
-<meta property="og:description" content="前言以前剛接觸到陣列map的時候，覺得很開心不用一直寫for迴圈，但我師父問起：你知道怎麼會有這個嗎?然後就開始解釋起原型鏈這可怕的東西了…在這裡只會提到原型繼承的概念，並不會挖太深。 先說結論在創立陣列時，它指向的原型，已經把所有陣列的方法，透過原型鏈繼承傳給它，即使在陣列本身看不到，但在他的骨子裡，沿著它的根尋找，就存在著這些方法 12345var arr &#x3D; [1,2,3];a">
+<meta property="og:description" content="前言以前剛接觸到陣列map的時候，覺得很開心不用一直寫for迴圈，但我師父問起：你知道怎麼會有這個嗎?然後就開始解釋起原型鏈這可怕的東西了…在這裡只會提到原型繼承的概念，並不會挖太深。">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://raw.githubusercontent.com/rccj/images/master/blog/prototype-00.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/rccj/images/master/blog/prototype-01.png">
@@ -104,7 +104,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/rccj/images/master/blog/prototype-01.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/rccj/images/master/blog/prototype-09.png">
 <meta property="article:published_time" content="2021-11-14T05:22:00.000Z">
-<meta property="article:modified_time" content="2021-11-14T05:29:07.042Z">
+<meta property="article:modified_time" content="2021-11-14T05:30:21.853Z">
 <meta property="article:author" content="Roman Chen">
 <meta property="article:tag" content="JavaScript">
 <meta property="article:tag" content="原型繼承">
@@ -367,7 +367,7 @@
           
             <span class="post-updated">
               &nbsp; | &nbsp; 更新於
-              <time itemprop="dateUpdated" datetime="2021-11-14T13:29:07+08:00" content="2021-11-14">
+              <time itemprop="dateUpdated" datetime="2021-11-14T13:30:21+08:00" content="2021-11-14">
                 2021-11-14
               </time>
             </span>
@@ -448,6 +448,8 @@
         <img src="https://raw.githubusercontent.com/rccj/images/master/blog/prototype-00.png" alt="prototype-01" style="zoom:50%;" />
 
 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>以前剛接觸到陣列map的時候，覺得很開心不用一直寫for迴圈，但我師父問起：你知道怎麼會有這個嗎?<br>然後就開始解釋起原型鏈這可怕的東西了…<br>在這裡只會提到原型繼承的概念，並不會挖太深。</p>
+<a id="more"></a>
+
 <h1 id="先說結論"><a href="#先說結論" class="headerlink" title="先說結論"></a>先說結論</h1><p>在創立陣列時，它指向的原型，已經把所有陣列的方法，透過原型鏈繼承傳給它，即使在陣列本身看不到，但在他的骨子裡，沿著它的根尋找，就存在著這些方法</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var arr &#x3D; [1,2,3];</span><br><span class="line"></span><br><span class="line">arr.map(x &#x3D;&gt; x + 1) &#x2F;&#x2F; [2,3,4]</span><br><span class="line">arr.filter(x &#x3D;&gt; x &gt; 1) &#x2F;&#x2F; [2,3]</span><br><span class="line">arr.length &#x2F;&#x2F; 3</span><br></pre></td></tr></table></figure>
 
