@@ -2,9 +2,10 @@
 <search>
   <entry>
     <title>比較乾淨的JaveScript</title>
-    <url>/2021/11/17/javacript-this/</url>
+    <url>/2021/11/17/clean-code/</url>
     <content><![CDATA[<img src="https://raw.githubusercontent.com/rccj/images/master/blog/javascript-this-00.png" alt="clean soap" style="zoom:50%;" />
 
+<p><a href="https://www.alexfediuc.com/content/images/2021/01/CleanCodeSoap.png" target="_blank" rel="noopener">圖片來源</a></p>
 <a id="more"></a>
 
 <h1 id="1-有意義的命名"><a href="#1-有意義的命名" class="headerlink" title="1.有意義的命名"></a>1.有意義的命名</h1><h2 id="變數與函式命名"><a href="#變數與函式命名" class="headerlink" title="變數與函式命名"></a>變數與函式命名</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Don't ❌ </span></span><br><span class="line"><span class="keyword">const</span> foo = <span class="string">'Roman'</span>;</span><br><span class="line"><span class="keyword">const</span> abc = <span class="string">'Chen'</span></span><br><span class="line"><span class="keyword">const</span> bbb = <span class="string">'roman0507@gmail.com'</span></span><br><span class="line"><span class="keyword">const</span> user = [<span class="string">'Roman'</span>,<span class="string">'Corgi'</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">submit</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Do ✔️</span></span><br><span class="line"><span class="keyword">const</span> name = <span class="string">'Roman'</span>;</span><br><span class="line"><span class="keyword">const</span> lastName = <span class="string">'Chen'</span></span><br><span class="line"><span class="keyword">const</span> email = <span class="string">'roman0507@gmail.com'</span></span><br><span class="line"><span class="keyword">const</span> users = [<span class="string">'Roman'</span>,<span class="string">'Corgi'</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">submitUserForm</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -180,7 +181,8 @@
     <title>HTTP概念入門</title>
     <url>/2021/10/28/http-intro/</url>
     <content><![CDATA[<p><img src="https://raw.githubusercontent.com/rccj/images/master/blog/http-intro.jpg" alt="http-intor"></p>
-<p>(圖片來源: 網路)</p>
+<center>(圖片來源: 網路)</center>
+
 <p>你常看到，但你可能不知道…</p>
 <a id="more"></a>
 
@@ -442,7 +444,8 @@
     <title>JavaScript常用的判斷方法</title>
     <url>/2021/10/23/conditional-statements/</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>判斷是邏輯的起源，<br>寫得好、寫得巧、寫得呱呱叫，<br>這裡會把一些我覺得跟<strong>『判斷』</strong>有關且常用的東西放進來。</p>
-<p><img src="https://raw.githubusercontent.com/rccj/images/master/blog/truefalse.jpg" alt="condition"><br>(圖片來源: 網路)</p>
+<p><img src="https://raw.githubusercontent.com/rccj/images/master/blog/truefalse.jpg" alt="condition"></p>
+<center>(圖片來源: 網路)</center>
 <a id="more"></a>
 
 <h1 id="判斷"><a href="#判斷" class="headerlink" title="判斷"></a>判斷</h1><p>故名意思，判斷就是要得到一個<strong>『是』</strong>或<strong>『不是』</strong>結果，而在JavaScript裡，我們期待得到的是<strong>『ture』</strong>或<strong>『false』</strong>或其他經由邏輯得到的結果。</p>
@@ -517,7 +520,7 @@
     <title>var, let, const多基本的東西</title>
     <url>/2021/02/11/variable-declaration/</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>距上次更新已經八個多月，除了工作上學到的新東西，<br>好像沒有當初自學時的那股衝勁與熱情。<br>我還是覺得前端的一切很好玩，<br>但怎麼說呢…</p>
-<p><img src="https://raw.githubusercontent.com/rccj/images/master/blog/002/1579416003413.jpg" alt="我就懶"><br>(圖片來源: <a href="https://memes.tw/wtf/133544" target="_blank" rel="noopener">https://memes.tw/wtf/133544</a>)</p>
+<p><img src="https://raw.githubusercontent.com/rccj/images/master/blog/002/1579416003413.jpg" alt="我就懶"><br><a href="https://memes.tw/wtf/133544" target="_blank" rel="noopener">圖片來源</a></p>
 <a id="more"></a>
 <p>有聽人說過，你知道五六年前是沒有前端工程師這職位的，技術變更很快，前端是學不完的，如果只會在原地踏步，三五年後可能也無法生存。<br>所以我不想耍廢，但也不知道要寫什麼，就從些基本的開始，累積點東西吧!</p>
 <h1 id="先說結論"><a href="#先說結論" class="headerlink" title="先說結論"></a>先說結論</h1><h2 id="不要用var"><a href="#不要用var" class="headerlink" title="不要用var"></a>不要用var</h2><p>現在的工作專案上，已經很少看到var了（至少我工作上沒用過），比起var，盡量使用let、const，可以避免掉全域汙染、重複宣告…等很多不必要的麻煩。</p>
