@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-tw,en,default">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<meta name="google-site-verification=xuse8zHODldaUNnzU3AHN1gh9q8eKu8kA5Ivx4p-iv4"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="v4y2igQtkw69N0XrIxVs_fmbdWi_3tcOprjeFR-6JXE" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JavaScript," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言判斷是邏輯的起源，寫得好、寫得巧、寫得呱呱叫，這裡會把一些我覺得跟『判斷』有關且常用的東西放進來。  (圖片來源: 網路)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript常用的判斷方法">
+<meta property="og:url" content="https://rccj.github.io/2021/10/23/conditional-statements/index.html">
+<meta property="og:site_name" content="Roman&#39;s Blog">
+<meta property="og:description" content="前言判斷是邏輯的起源，寫得好、寫得巧、寫得呱呱叫，這裡會把一些我覺得跟『判斷』有關且常用的東西放進來。  (圖片來源: 網路)">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://raw.githubusercontent.com/rccj/images/master/blog/truefalse.jpg">
+<meta property="article:published_time" content="2021-10-23T08:47:00.000Z">
+<meta property="article:modified_time" content="2021-11-17T14:08:54.621Z">
+<meta property="article:author" content="Roman Chen">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/rccj/images/master/blog/truefalse.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://rccj.github.io/2021/10/23/conditional-statements/"/>
+
+
+
+
+
+  <title>JavaScript常用的判斷方法 | Roman's Blog</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-163827647-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Roman's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">:)</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            關於
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            標籤
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分類
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            歸檔
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            檢索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://rccj.github.io/2021/10/23/conditional-statements/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Roman Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/rccj/images/master/sources/avatar.jpg?token=AOLGL2JISRTDXUUPSA7UJ4K6P4BPK">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Roman's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaScript常用的判斷方法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2021-10-23T16:47:00+08:00">
+                2021-10-23
+              </time>
+            
+
+            
+
+            
+          </span>
+          
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp; 更新於
+              <time itemprop="dateUpdated" datetime="2021-11-17T22:08:54+08:00" content="2021-11-17">
+                2021-11-17
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/JS%E5%9F%BA%E6%9C%AC%E5%8A%9F/" itemprop="url" rel="index">
+                    <span itemprop="name">JS基本功</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/10/23/conditional-statements/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2021/10/23/conditional-statements/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>判斷是邏輯的起源，<br>寫得好、寫得巧、寫得呱呱叫，<br>這裡會把一些我覺得跟<strong>『判斷』</strong>有關且常用的東西放進來。</p>
+<p><img src="https://raw.githubusercontent.com/rccj/images/master/blog/truefalse.jpg" alt="condition"></p>
+<center>(圖片來源: 網路)</center>
+<a id="more"></a>
+
+<h1 id="判斷"><a href="#判斷" class="headerlink" title="判斷"></a>判斷</h1><p>故名意思，判斷就是要得到一個<strong>『是』</strong>或<strong>『不是』</strong>結果，而在JavaScript裡，我們期待得到的是<strong>『ture』</strong>或<strong>『false』</strong>或其他經由邏輯得到的結果。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//a等於b？</span></span><br><span class="line"><span class="built_in">console</span>.log(a == b); <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+
+<p>這就是一個簡單的判斷</p>
+<h1 id="比較運算子-Comparison-operators"><a href="#比較運算子-Comparison-operators" class="headerlink" title="比較運算子 Comparison operators"></a>比較運算子 Comparison operators</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//a等於b？</span></span><br><span class="line"><span class="built_in">console</span>.log(a == b); <span class="comment">//false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//a不等於b?</span></span><br><span class="line"><span class="built_in">console</span>.log(a != b); <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//a等於b？(嚴謹模式)</span></span><br><span class="line"><span class="built_in">console</span>.log(a === b); <span class="comment">//false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//a不等於b?(嚴謹模式)</span></span><br><span class="line"><span class="built_in">console</span>.log(a !== b); <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//a大於b</span></span><br><span class="line"><span class="built_in">console</span>.log(a &gt; b); <span class="comment">//false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//a大於等於b</span></span><br><span class="line"><span class="built_in">console</span>.log(a &gt;= b); <span class="comment">//false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//a小於b</span></span><br><span class="line"><span class="built_in">console</span>.log(a &lt; b); <span class="comment">//ture</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//a小於等於b</span></span><br><span class="line"><span class="built_in">console</span>.log(a &lt;= b); <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Tip: “!” 驚嘆在運算子中為相反的意思。 ex: !false === true</p>
+</blockquote>
+<p>這就是全部的比較運算子，基本上都是國小，使用上應該都很直覺。</p>
+<p>比較值得留意的是嚴謹模式下的<strong>“===”</strong>與<strong>“!==”</strong></p>
+<h2 id="嚴謹模式"><a href="#嚴謹模式" class="headerlink" title="嚴謹模式"></a>嚴謹模式</h2><p>在嚴謹模式開發現，可避免一些不必要的錯誤，在這裡我們只說明比較運算子的存在的兩個嚴謹模式，<strong>“===”</strong>與<strong>“!==”</strong>。</p>
+<blockquote>
+<p>Tip: 比較運算子沒有這種東西 “&gt;&gt;” “&lt;&lt;”</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">3</span> == <span class="string">'3'</span>); <span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">0</span> == <span class="string">''</span>); <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//嚴謹模式</span></span><br><span class="line"><span class="comment">// number 不等於 string</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">3</span> == <span class="string">'3'</span>); <span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">0</span> == <span class="string">''</span>); <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+
+<p>在嚴謹模式下的比較運算子，會連<strong>『型別』</strong>也進行比較。</p>
+<h1 id="邏輯運算子-Logical-operators"><a href="#邏輯運算子-Logical-operators" class="headerlink" title="邏輯運算子 Logical operators"></a>邏輯運算子 Logical operators</h1><h2 id="amp-amp"><a href="#amp-amp" class="headerlink" title="&amp;&amp;"></a>&amp;&amp;</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a1 =  <span class="literal">true</span> &amp;&amp; <span class="literal">true</span>;     <span class="comment">// t &amp;&amp; t returns true</span></span><br><span class="line"><span class="keyword">var</span> a2 =  <span class="literal">true</span> &amp;&amp; <span class="literal">false</span>;    <span class="comment">// t &amp;&amp; f returns false</span></span><br><span class="line"><span class="keyword">var</span> a3 = <span class="literal">false</span> &amp;&amp; <span class="literal">true</span>;     <span class="comment">// f &amp;&amp; t returns false</span></span><br><span class="line"><span class="keyword">var</span> a4 = <span class="literal">false</span> &amp;&amp; (<span class="number">3</span> == <span class="number">4</span>); <span class="comment">// f &amp;&amp; f returns false</span></span><br><span class="line"><span class="keyword">var</span> a5 = <span class="string">"Cat"</span> &amp;&amp; <span class="string">"Dog"</span>;    <span class="comment">// t &amp;&amp; t returns 'Dog'</span></span><br><span class="line"><span class="keyword">var</span> a6 = <span class="literal">false</span> &amp;&amp; <span class="string">"Cat"</span>;    <span class="comment">// f &amp;&amp; t returns false</span></span><br><span class="line"><span class="keyword">var</span> a7 = <span class="string">"Cat"</span> &amp;&amp; <span class="literal">false</span>;    <span class="comment">// t &amp;&amp; f returns false</span></span><br></pre></td></tr></table></figure>
+
+<h2 id=""><a href="#" class="headerlink" title="||"></a>||</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o1 =  <span class="literal">true</span> || <span class="literal">true</span>;     <span class="comment">// returns true</span></span><br><span class="line"><span class="keyword">var</span> o2 = <span class="literal">false</span> || <span class="literal">true</span>;     <span class="comment">// returns true</span></span><br><span class="line"><span class="keyword">var</span> o3 =  <span class="literal">true</span> || <span class="literal">false</span>;    <span class="comment">// returns true</span></span><br><span class="line"><span class="keyword">var</span> o4 = <span class="literal">false</span> || (<span class="number">3</span> == <span class="number">4</span>); <span class="comment">// returns false</span></span><br><span class="line"><span class="keyword">var</span> o5 = <span class="string">'Cat'</span> || <span class="string">'Dog'</span>;    <span class="comment">// returns 'Cat'</span></span><br><span class="line"><span class="keyword">var</span> o6 = <span class="literal">false</span> || <span class="string">'Cat'</span>;    <span class="comment">// returns 'Cat'</span></span><br><span class="line"><span class="keyword">var</span> o7 = <span class="string">'Cat'</span> || <span class="literal">false</span>;    <span class="comment">// returns 'Cat'</span></span><br></pre></td></tr></table></figure>
+
+<p>“||” 可以看成『或著』的意思，由前面開始，只要是 null、 0、 NaN、 空字串 (“”)、undefined可以轉換為false的運算式，就會下面一位，直到符合或是最後一個。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o8 =  <span class="literal">null</span> || undefind || <span class="literal">false</span> || <span class="string">'Hi'</span>;  <span class="comment">// returns 'Hi'</span></span><br><span class="line"><span class="keyword">var</span> o9 =  <span class="literal">null</span> || <span class="string">'Hi'</span> || <span class="literal">false</span>;              <span class="comment">// returns 'Hi'</span></span><br><span class="line"><span class="keyword">var</span> o10 =  <span class="string">''</span> || <span class="string">'Hi'</span>;                        <span class="comment">// returns 'Hi'</span></span><br><span class="line"><span class="keyword">var</span> o11 =  <span class="number">0</span> || <span class="string">'Hi'</span>;                         <span class="comment">// returns 'Hi'</span></span><br><span class="line"><span class="keyword">var</span> o12 =  [] || <span class="string">'Hi'</span>;                        <span class="comment">// returns []</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="-1"><a href="#-1" class="headerlink" title="??"></a>??</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> b1 =  <span class="number">1</span> ?? <span class="literal">true</span>;     <span class="comment">// returns 1</span></span><br><span class="line"><span class="keyword">var</span> b2 = 	<span class="literal">false</span> ?? <span class="literal">true</span>;    <span class="comment">// returns true</span></span><br><span class="line"><span class="keyword">var</span> b3 =  <span class="literal">null</span> ?? <span class="number">1</span>;    		<span class="comment">// returns 1</span></span><br><span class="line"><span class="keyword">var</span> b4 =  <span class="literal">undefined</span> ?? <span class="number">1</span>;   <span class="comment">// returns 1</span></span><br><span class="line"><span class="keyword">var</span> b5 =  <span class="number">0</span> ?? <span class="number">1</span>;    				<span class="comment">// returns 0</span></span><br><span class="line"><span class="keyword">var</span> b6 =  <span class="string">''</span> ?? <span class="string">'Hi'</span>;    		<span class="comment">// returns ''</span></span><br></pre></td></tr></table></figure>
+<p><strong>Nullish coalescing operator (<code>??</code>)</strong>是我比較後來才知道的，有時候使用”??”會比”||”好，因為他的０或空字串””不會被判定略過，某些狀況下還是比較適合的。</p>
+<h1 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getMeal</span>(<span class="params">time</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">switch</span> (time) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">7</span>:</span><br><span class="line">      <span class="keyword">return</span> <span class="string">'早餐'</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">12</span>:</span><br><span class="line">      <span class="keyword">return</span> <span class="string">'午餐'</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">16</span>:					<span class="comment">//16跟17 共用結果</span></span><br><span class="line">    <span class="keyword">case</span> <span class="number">17</span>:</span><br><span class="line">      <span class="keyword">return</span> <span class="string">'晚餐'</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">20</span>:</span><br><span class="line">      <span class="keyword">break</span>;					<span class="comment">//加上break會強迫終止判斷</span></span><br><span class="line">      <span class="keyword">return</span> <span class="string">'宵夜'</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      <span class="keyword">return</span> <span class="string">'沒了'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(getMeal(<span class="number">12</span>)); <span class="comment">//'午餐'</span></span><br><span class="line"><span class="built_in">console</span>.log(getMeal(<span class="number">16</span>)); <span class="comment">//'晚餐'</span></span><br><span class="line"><span class="built_in">console</span>.log(getMeal(<span class="number">20</span>)); <span class="comment">//undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>未達條件會繼續往下走，直到default。</p>
+<h1 id="if…else"><a href="#if…else" class="headerlink" title="if…else"></a>if…else</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getMeal</span>(<span class="params">time</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (time == <span class="number">7</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'早餐'</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (time == <span class="number">12</span>)&#123; <span class="comment">// 符合條件，結束判斷，以下不執行</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'午餐'</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (time == <span class="number">17</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'晚餐'</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'沒了'</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(getMeal(<span class="number">12</span>)); <span class="comment">//'午餐'</span></span><br></pre></td></tr></table></figure>
+
+<p>未達條件會繼續往下走，符合條件其中之一作件，會停止整個if…else判斷。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (time == <span class="number">7</span>) &#123;              <span class="comment">//if作為整個 if...else的開頭 </span></span><br><span class="line">  <span class="keyword">return</span> <span class="string">'早餐'</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (time == <span class="number">12</span>) &#123;    <span class="comment">//else if 可作為下一個條件</span></span><br><span class="line">  <span class="keyword">return</span> <span class="string">'午餐'</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (time == <span class="number">17</span>) &#123;    <span class="comment">//未達條件再往下走</span></span><br><span class="line">  <span class="keyword">return</span> <span class="string">'晚餐'</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;									 <span class="comment">//直到碰到 else 就必定結束</span></span><br><span class="line">  <span class="keyword">return</span> <span class="string">'沒了'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (time == <span class="number">7</span>) &#123;             </span><br><span class="line">  <span class="keyword">return</span> <span class="string">'早餐'</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;								</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'沒了'</span>;            <span class="comment">//不一定會有 else if</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (time == <span class="number">7</span>) &#123;              <span class="comment">//可以做一個簡單的判斷</span></span><br><span class="line">  <span class="keyword">return</span> <span class="string">'早餐'</span>;            <span class="comment">//所以也不一定會有 else</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>有時判斷思路可以改變下，以 getMeal 的函式來說，可以寫成更簡潔的</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getMeal</span>(<span class="params">time</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (time == <span class="number">7</span>)<span class="keyword">return</span> <span class="string">'早餐'</span>;</span><br><span class="line">  <span class="keyword">if</span> (time == <span class="number">12</span>)<span class="keyword">return</span> <span class="string">'午餐'</span>;</span><br><span class="line">  <span class="keyword">if</span> (time == <span class="number">17</span>)<span class="keyword">return</span> <span class="string">'晚餐'</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'沒了'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(getMeal(<span class="number">12</span>)); <span class="comment">//'午餐'</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Tip: 如果判斷是只有簡單的對或錯可以使用”三元表達式”</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isTure</span>(<span class="params">boolean</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(boolean == <span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span>(<span class="string">'Yes'</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (boolean == <span class="literal">false</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span>(<span class="string">'No'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//看起來可以簡單點</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isTure</span>(<span class="params">boolean</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(boolean == <span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span>(<span class="string">'Yes'</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span>(<span class="string">'No'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//在拿掉一點東西</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isTure</span>(<span class="params">boolean</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(boolean == <span class="literal">true</span>) <span class="keyword">return</span>(<span class="string">'Yes'</span>);</span><br><span class="line">  <span class="keyword">return</span>(<span class="string">'No'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//三元表達式 來囉</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isTure</span>(<span class="params">boolean</span>) </span>&#123;</span><br><span class="line">  boolea ? <span class="keyword">return</span>(<span class="string">'Yes'</span>) : <span class="keyword">return</span>(<span class="string">'No'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>三元表達式 ＝&gt; “ 判斷 ? 結果一  : 結果二 “</p>
+</blockquote>
+<p>可以想像成，如果判斷是對的話，走結果一，其他走結果二。</p>
+<h1 id="Optional-chaining"><a href="#Optional-chaining" class="headerlink" title="Optional chaining (?.)"></a>Optional chaining (?.)</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> adventurer = &#123;</span><br><span class="line">  name: <span class="string">'Alice'</span>,</span><br><span class="line">  cat: &#123;</span><br><span class="line">    name: <span class="string">'Dinah'</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> dogName = adventurer.dog?.name;</span><br><span class="line"><span class="built_in">console</span>.log(dogName);</span><br><span class="line"><span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(adventurer.someNonExistentMethod?.());</span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>如我物件找不到的話會直接終止，給予undefined，並不會繼續往下找，省得一些不必要的過程。<br>但在一些程式中需要防呆機制，以保證就算找不到想要的值，程式還是可以正常地跑下去。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> dogName = adventurer.dog?.name ?? <span class="string">'No name'</span></span><br><span class="line"><span class="built_in">console</span>.log(dogName);</span><br><span class="line"><span class="comment">// 'No name'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(adventurer.someNonExistentMethod?.() ?? <span class="string">'NonExistentMethod'</span>);</span><br><span class="line"><span class="comment">// 'NonExistentMethod'</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="為什麼不用「-」"><a href="#為什麼不用「-」" class="headerlink" title="為什麼不用「||」"></a>為什麼不用「||」</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> adventurer = &#123;</span><br><span class="line">  name: <span class="string">'Alice'</span>,</span><br><span class="line">  cat: &#123;</span><br><span class="line">    name: <span class="string">''</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> catName = adventurer.cat?.name ?? <span class="string">'No name'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(catName);</span><br><span class="line"><span class="comment">// ''</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> catName2 = adventurer.cat?.name || <span class="string">'No name'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(catName2);</span><br><span class="line"><span class="comment">// 'No name'</span></span><br></pre></td></tr></table></figure>
+<p>完全是看自己需求，看前面提到的，如果你需要如果找到的值，<br>只要是 null、 0、 NaN、 空字串 (“”)、undefined可以轉換為false的運算式，就往下的話，就可以用||。</p>
+<blockquote>
+<p>Tip: 在??中，0 或是 “”，都會被保留。</p>
+</blockquote>
+<h1 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h1><p>我只寫些常用且比較直覺關於判斷的東西，歡迎批評指教。</p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#assignment_operators" target="_blank" rel="noopener">MDN Web Docs</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/02/11/variable-declaration/" rel="next" title="var, let, const多基本的東西">
+                <i class="fa fa-chevron-left"></i> var, let, const多基本的東西
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/10/27/markdown/" rel="prev" title="Markdown 常用語法">
+                Markdown 常用語法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://raw.githubusercontent.com/rccj/images/master/sources/avatar.jpg?token=AOLGL2JISRTDXUUPSA7UJ4K6P4BPK"
+                alt="Roman Chen" />
+            
+              <p class="site-author-name" itemprop="name">Roman Chen</p>
+              <p class="site-description motion-element" itemprop="description">Hi</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分類</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">標籤</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#判斷"><span class="nav-number">2.</span> <span class="nav-text">判斷</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#比較運算子-Comparison-operators"><span class="nav-number">3.</span> <span class="nav-text">比較運算子 Comparison operators</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#嚴謹模式"><span class="nav-number">3.1.</span> <span class="nav-text">嚴謹模式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#邏輯運算子-Logical-operators"><span class="nav-number">4.</span> <span class="nav-text">邏輯運算子 Logical operators</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#amp-amp"><span class="nav-number">4.1.</span> <span class="nav-text">&amp;&amp;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">4.2.</span> <span class="nav-text">||</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#-1"><span class="nav-number">4.3.</span> <span class="nav-text">??</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#switch"><span class="nav-number">5.</span> <span class="nav-text">switch</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#if…else"><span class="nav-number">6.</span> <span class="nav-text">if…else</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Optional-chaining"><span class="nav-number">7.</span> <span class="nav-text">Optional chaining (?.)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#為什麼不用「-」"><span class="nav-number">7.1.</span> <span class="nav-text">為什麼不用「||」</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#小結"><span class="nav-number">8.</span> <span class="nav-text">小結</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#參考資料"><span class="nav-number">8.1.</span> <span class="nav-text">參考資料</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Roman Chen</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://rccj.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://rccj.github.io/2021/10/23/conditional-statements/';
+          this.page.identifier = '2021/10/23/conditional-statements/';
+          this.page.title = 'JavaScript常用的判斷方法';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://rccj.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
