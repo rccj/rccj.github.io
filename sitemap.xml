@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://rccj.github.io/2021/11/20/javascript-this/</loc>
+    
+    <lastmod>2021-11-20T12:37:08.081Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://rccj.github.io/2021/11/14/prototype-map/</loc>
+    
+    <lastmod>2021-11-20T12:28:53.299Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://rccj.github.io/2021/11/17/clean-code/</loc>
     
     <lastmod>2021-11-17T14:29:59.331Z</lastmod>
@@ -26,13 +40,6 @@
     <loc>https://rccj.github.io/2021/10/23/conditional-statements/</loc>
     
     <lastmod>2021-11-17T14:08:54.621Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://rccj.github.io/2021/11/14/prototype-map/</loc>
-    
-    <lastmod>2021-11-14T05:30:21.853Z</lastmod>
     
   </url>
   
