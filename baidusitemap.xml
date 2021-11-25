@@ -2,15 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://rccj.github.io/2021/11/20/javascript-this/</loc>
-    <lastmod>2021-11-20</lastmod>
+    <lastmod>2021-11-25</lastmod>
+  </url>  <url>
+    <loc>https://rccj.github.io/2021/02/11/variable-declaration/</loc>
+    <lastmod>2021-11-25</lastmod>
   </url>  <url>
     <loc>https://rccj.github.io/2021/11/14/prototype-map/</loc>
     <lastmod>2021-11-20</lastmod>
   </url>  <url>
     <loc>https://rccj.github.io/2021/11/17/clean-code/</loc>
-    <lastmod>2021-11-17</lastmod>
-  </url>  <url>
-    <loc>https://rccj.github.io/2021/02/11/variable-declaration/</loc>
     <lastmod>2021-11-17</lastmod>
   </url>  <url>
     <loc>https://rccj.github.io/2021/10/28/http-intro/</loc>
