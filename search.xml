@@ -1,6 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Node.js就是JavaScript?</title>
+    <url>/2021/12/13/nodejs-intro/</url>
+    <content><![CDATA[<img src="https://raw.githubusercontent.com/rccj/images/master/blog/nodejs-intro-00.jpg" style="zoom:50%;" />
+
+<h1 id="Node-js是一種程式語言"><a href="#Node-js是一種程式語言" class="headerlink" title="Node.js是一種程式語言?"></a>Node.js是一種程式語言?</h1><p>Node.js 不是一個程式語言，也不是一個框架，它是一個 JavaScript 的 runtime(運行時環境)，並採用 Google 所開發的 V8 引擎執行程式碼，使用事件驅動、非阻塞和非同步輸入輸出等技術提高效能。</p>
+<a id="more"></a>
+<p>在 Node.js 出現以前，JavaScript 只能做為用戶端程式語言，並且只能在瀏覽器這個宿主中執行。Node.js 的出現使 JavaScript 也能夠脫離瀏覽器運行，可用於伺服器編程。另外 Node.js 含有一系列核心模組，使程式脫離 Apache HTTP Server 或 IIS，作為獨立伺服器執行。</p>
+<p>簡單來說 Node.js 不是一個程式語言，JavaScript 才是，而 Node.js 是以V8 為核心，讓電腦可以以 Command line 的方式執行 JavaScript。</p>
+<h1 id="Node-js與JavaSript差異"><a href="#Node-js與JavaSript差異" class="headerlink" title="Node.js與JavaSript差異"></a>Node.js與JavaSript差異</h1><p>Node.js 環境中的 JavaScript 不同於瀏覽器端所執行的 JavaScript</p>
+<h2 id="瀏覽器中的-JavaScript"><a href="#瀏覽器中的-JavaScript" class="headerlink" title="瀏覽器中的 JavaScript"></a>瀏覽器中的 JavaScript</h2><p>一般來說在前端領域我們所認識的 JavaScript 含有：</p>
+<ul>
+<li>ECMAScript <ul>
+<li>基本語法</li>
+<li>if</li>
+<li>var</li>
+<li>function</li>
+<li>預設物件<ul>
+<li>Array</li>
+<li>Object</li>
+<li>Date</li>
+<li>Math</li>
+<li>…</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>BOM (核心是 window 物件)</li>
+<li>DOM (樹狀結構來表示 HTML 文件的模型)</li>
+</ul>
+<h2 id="Node-js-中的-JavaScript"><a href="#Node-js-中的-JavaScript" class="headerlink" title="Node.js 中的 JavaScript"></a>Node.js 中的 JavaScript</h2><p>然而在 Node.js 中，不同於瀏覽器端的 JS，它<strong>不含有 BOM 及 DOM</strong>，因為它執行在伺服器端，並不需要操做任何 HTML 的節點，它只含有 JS 的核心 也就是我們熟知的 ECMAScript。<br>另外 Node.js 提供一系列伺服器相關核心模組，提供開發者多樣化的 API，如 HTTP 服務能力及文件操作能力.. 等等</p>
+<ul>
+<li>ECMAScript</li>
+<li>核心模組<ul>
+<li>讀寫文件</li>
+<li>HTTP 網路服務建置</li>
+<li>網路通信</li>
+<li>…</li>
+</ul>
+</li>
+<li>建置於 Chrome V8 引擎上，是目前公認最快的 JS 引擎</li>
+<li>Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient.<ul>
+<li>event-driven 事件驅動</li>
+<li>non-blocking I/O model 非阻塞IO模型 (異步)，類似於 AJAX，Node.js 提供大量非同步 API</li>
+<li>輕量及高效能</li>
+</ul>
+</li>
+<li>Node.js’ package ecosystem, npm is the largest ecosystem of open source libraries in th world<ul>
+<li>npm 是世界上最大的開源套件生態系統</li>
+<li>絕大多數 JavaScript 相關套件都存放在 npm 上，這樣做的目的是為了讓開發者更容易去下載使用</li>
+</ul>
+</li>
+</ul>
+<h1 id="Node-js-可以做什麼"><a href="#Node-js-可以做什麼" class="headerlink" title="Node.js 可以做什麼?"></a>Node.js 可以做什麼?</h1><ul>
+<li>伺服器後台</li>
+<li>command line 工具 (如：npm、git、hexo …)<br>對於前端工程師而言，接觸 node 最多的是它的 command line 工具，如 npm、Webpack、gulp、等等</li>
+</ul>
+<h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><p><a href="https://dylan237.github.io/what-is-nodejs.html" target="_blank" rel="noopener">Dylan’s Blog: 認識Node.js</a><br><a href="https://progressbar.tw/posts/291" target="_blank" rel="noopener">進度條編輯群: Node.js 是什麼？</a><br><a href="https://zh.wikipedia.org/wiki/Node.js" target="_blank" rel="noopener">Wikipedia: Node.js</a><br><a href="https://www.happycoding.today/posts/43" target="_blank" rel="noopener">HappyCoding: BOM和DOM筆記</a></p>
+]]></content>
+      <categories>
+        <category>nodejs</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>nodejs</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>What is &quot;this&quot; in JavaScript</title>
     <url>/2021/11/20/javascript-this/</url>
     <content><![CDATA[<p><img src="https://raw.githubusercontent.com/rccj/images/master/blog/javascript-this-00.png" alt=""></p>
