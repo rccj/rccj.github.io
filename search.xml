@@ -3,11 +3,8 @@
   <entry>
     <title>MongoDB安裝</title>
     <url>/2021/12/19/mongodb-install/</url>
-    <content><![CDATA[<br>
-<a id="more"></a>
-# Windows
-
-<h2 id="安裝-MongoDB"><a href="#安裝-MongoDB" class="headerlink" title="安裝 MongoDB"></a>安裝 MongoDB</h2><p>先至 MongoDB <a href="https://www.mongodb.com/try/download/community" target="_blank" rel="noopener">官方網站</a> 根據自己的 Windows 版本下載 MongoDB Community Server，並完成安裝。<br>基本上用預設一直按下一步即可</p>
+    <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><a id="more"></a>
+<h1 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h1><h2 id="安裝-MongoDB"><a href="#安裝-MongoDB" class="headerlink" title="安裝 MongoDB"></a>安裝 MongoDB</h2><p>先至 MongoDB <a href="https://www.mongodb.com/try/download/community" target="_blank" rel="noopener">官方網站</a> 根據自己的 Windows 版本下載 MongoDB Community Server，並完成安裝。<br>基本上用預設一直按下一步即可</p>
 <h2 id="設定-DB-存放資料夾"><a href="#設定-DB-存放資料夾" class="headerlink" title="設定 DB 存放資料夾"></a>設定 DB 存放資料夾</h2><p>MongoDB 預設會把檔案存放在 C:\data\db 的路徑下，因此我們先建立一個資料夾：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> C:\</span><br><span class="line">mkdir <span class="string">"\data\db"</span></span><br></pre></td></tr></table></figure>
 
