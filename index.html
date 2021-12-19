@@ -398,37 +398,14 @@
 
       
         
-          
-            <a id="more"></a>
-<h1 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h1><h2 id="安裝-MongoDB"><a href="#安裝-MongoDB" class="headerlink" title="安裝 MongoDB"></a>安裝 MongoDB</h2><p>先至 MongoDB <a href="https://www.mongodb.com/try/download/community" target="_blank" rel="noopener">官方網站</a> 根據自己的 Windows 版本下載 MongoDB Community Server，並完成安裝。<br>基本上用預設一直按下一步即可</p>
-<h2 id="設定-DB-存放資料夾"><a href="#設定-DB-存放資料夾" class="headerlink" title="設定 DB 存放資料夾"></a>設定 DB 存放資料夾</h2><p>MongoDB 預設會把檔案存放在 C:\data\db 的路徑下，因此我們先建立一個資料夾：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> C:\</span><br><span class="line">mkdir <span class="string">"\data\db"</span></span><br></pre></td></tr></table></figure>
-
-<p>接著啟動 MongoDB 並把剛剛建立的資料夾指定給它：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="string">"C:\Program Files\MongoDB\Server\5.0\bin\mongod.exe"</span> --dbpath=<span class="string">"c:\data\db"</span></span><br></pre></td></tr></table></figure>
-
-<p>如果你看到畫面上出現<code>[initandlisten] waiting for connections</code>表示啟動成功。</p>
-<h2 id="連接至-MongoDB"><a href="#連接至-MongoDB" class="headerlink" title="連接至 MongoDB"></a>連接至 MongoDB</h2><p>留著啟動 MongoDB 的 Terminal ，開啟另外一個 Terminal 執行 monogo.exe，如此就進入了 MongoDB 的殼層（shell）：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"C:\Program Files\MongoDB\Server\5.0\bin\mongo.exe"</span></span><br></pre></td></tr></table></figure>
-
-<p>在這裡面我們可以透過指令來操作 MongoDB：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="built_in">help</span></span><br><span class="line">&gt; show dbs</span><br><span class="line">&gt; show collections</span><br></pre></td></tr></table></figure>
-
-<h1 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h1><h2 id="1-Homebrew-推薦"><a href="#1-Homebrew-推薦" class="headerlink" title="1. Homebrew (推薦)"></a>1. Homebrew (推薦)</h2><p>沒有此工具的人可以先點<a href="https://brew.sh/index_zh-tw" target="_blank" rel="noopener">這裡</a>安裝一下</p>
-<h3 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安裝 brew services</span></span><br><span class="line">brew tap homebrew/services <span class="comment"># brew tap mongodb/brew</span></span><br><span class="line">brew install mongodb-community</span><br><span class="line"><span class="built_in">which</span> mongod        <span class="comment"># 確認安裝完畢</span></span><br><span class="line">mongod --version    <span class="comment"># 確認安裝完畢</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="透過-brew-services-啟動-MongoDB"><a href="#透過-brew-services-啟動-MongoDB" class="headerlink" title="透過 brew services 啟動 MongoDB"></a>透過 brew services 啟動 MongoDB</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安裝 brew services</span></span><br><span class="line">brew tap homebrew/services</span><br><span class="line"></span><br><span class="line"><span class="comment"># 啟動 mongodb</span></span><br><span class="line">brew services start mongodb-community </span><br><span class="line"><span class="comment"># Successfully started `mongodb-community`</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 確認已經啟動 mongodb</span></span><br><span class="line">brew services list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止 mongodb</span></span><br><span class="line">brew services stop mongodb-community</span><br><span class="line"><span class="comment"># Successfully stopped `mongodb-community`</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="開始使用-MongoDB"><a href="#開始使用-MongoDB" class="headerlink" title="開始使用 MongoDB"></a>開始使用 MongoDB</h3><p>再開啟另一個 Terminal 輸入 mongo 即可進入 MongoDB 殼層（shell）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo</span><br></pre></td></tr></table></figure>
-
-<h3 id="檔案路徑"><a href="#檔案路徑" class="headerlink" title="檔案路徑"></a>檔案路徑</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">組態檔：&#x2F;usr&#x2F;local&#x2F;etc&#x2F;mongod.conf</span><br><span class="line">日志目錄路徑：&#x2F;usr&#x2F;local&#x2F;var&#x2F;log&#x2F;mongodb</span><br><span class="line">資料目錄路徑：&#x2F;usr&#x2F;local&#x2F;var&#x2F;mongodb</span><br></pre></td></tr></table></figure>
-
-<p>到Finder，<code>command + shift + G</code>，可直接到目的路徑</p>
-<h2 id="2-其他"><a href="#2-其他" class="headerlink" title="2. 其他"></a>2. 其他</h2><p>有興趣可以查看底下參考 </p>
-<h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><p><a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/" target="_blank" rel="noopener">Install MongoDB Community Edition on macOS</a><br><a href="https://www.uj5u.com/shujuku/32643.html" target="_blank" rel="noopener">MongoDB 不在開源，Homebrew 安裝只能玩社區版</a><br><a href="https://pjchender.dev/database/mongo-install/" target="_blank" rel="noopener">MongoDB 安裝</a><br><a href="https://www.796t.com/post/MzR6aWs=.html" target="_blank" rel="noopener">mongo和mongod有什麼實際區別？</a></p>
-
-          
+          <p>#####</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/12/19/mongodb-install/#more" rel="contents">
+              閱讀全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
