@@ -1,6 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>IP、DNS、Port 概述</title>
+    <url>/2021/12/24/ip-dns-port/</url>
+    <content><![CDATA[<img src="https://raw.githubusercontent.com/rccj/images/master/blog/ip-dns-port-00.png" alt="prototype-01" style="zoom:50%;" />
+
+<a id="more"></a>
+
+<h1 id="IP"><a href="#IP" class="headerlink" title="IP"></a>IP</h1><h2 id="0與1"><a href="#0與1" class="headerlink" title="0與1"></a>0與1</h2><p>認識IP之前，要先知道在電腦最底層只認識0跟1，電腦所知道的都是從0跟1開始與結束。<br>我們日常生活用的是十進制，但電腦只能讀懂二進制。</p>
+<table>
+<thead>
+<tr>
+<th align="center">人類眼中(十進制)</th>
+<th align="center">電腦眼中(二進制)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center">1010</td>
+</tr>
+<tr>
+<td align="center">100</td>
+<td align="center">1100100</td>
+</tr>
+</tbody></table>
+<p>而二進制中的1個位置就是1個bit</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1 &#x3D;&gt; 1 bit</span><br><span class="line">10 &#x3D;&gt; 2 bits</span><br><span class="line">100 &#x3D;&gt; 3 bits</span><br><span class="line">101 &#x3D;&gt; 3 bits</span><br><span class="line">10101010 &#x3D;&gt; 8 bits &#x3D;&gt; 1 Byte</span><br></pre></td></tr></table></figure>
+<p>可得知1 Byte 有<code>0~255</code>的可能<br>可以點<a href="https://www.convertworld.com/zh-hant/numerals/binary.html" target="_blank" rel="noopener">這裡</a>去試試二進制轉十進制</p>
+<h2 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h2><p>IP位址（英語：IP Address，全稱Internet Protocol Address）</p>
+<p>目前比較常看到的IP地址(IPv4)長這樣 <code>127.0.0.1</code></p>
+<h3 id="IPv4"><a href="#IPv4" class="headerlink" title="IPv4"></a>IPv4</h3><p>由4 Bytes組成<br>4 Bytes =&gt; 32 bits =&gt; 2^32 種可能性(每個bit有0或1)<br>以2的32次方計算，大約可得<strong>42億900萬</strong><br>或你可理解成<code>256 * 256 * 256 * 256</code><br>每個能連上網的裝置都是獨特的，所以全世界只能同時有約42億台裝置同時連上網<br><img src="https://raw.githubusercontent.com/rccj/images/master/blog/ip-dns-port-01.jpg" alt="image alt"><br>IPv6為了解決IP位置被用完的問題而出現了</p>
+<h3 id="IPv6"><a href="#IPv6" class="headerlink" title="IPv6"></a>IPv6</h3><p>由16 Bytes組成<br>16 Bytes =&gt; 128 bits =&gt; 2^128 種可能性(每個bit有0或1)<br>以2的128次方計算，大約可得<code>超級大</code><br>可解決IP不夠用的問題</p>
+<blockquote>
+<p>IPv6網際協定的最新版本，這裡不多作探討</p>
+</blockquote>
+<h1 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h1><p>網域名稱系統（英語：Domain Name System，縮寫：DNS）</p>
+<p>剛剛從IP知道，每個連上網的裝置都有自己獨特的IP位置。<br>我們可以透過瀏覽器輸入IP連線到別人的裝置，他們接受到的後會回覆要給你顯示的畫面<br>可以參考這篇<a href="https://rccj.github.io/2021/10/28/http-intro/#more">HTTP概念入門</a></p>
+<p>但我們今天到某個網站，輸入一堆數字，不符合人性也很難記得住</p>
+<table>
+<thead>
+<tr>
+<th align="center">IP位置</th>
+<th align="center">DNS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">127.0.0.3</td>
+<td align="center"><a href="http://www.youtube.com" target="_blank" rel="noopener">www.youtube.com</a></td>
+</tr>
+<tr>
+<td align="center">126.80.80.2</td>
+<td align="center"><a href="http://www.netflex.com" target="_blank" rel="noopener">www.netflex.com</a></td>
+</tr>
+</tbody></table>
+<p>(此IP位置為舉例，亂取的)</p>
+<p><img src="https://raw.githubusercontent.com/rccj/images/master/blog/ip-dns-port-02.jpg" alt="DNS"><br>透過DNS，我們能更直覺得輸入網址(<a href="http://www.youtube.com)，他會幫我們轉換成IP位置，能更方便的前往網站。" target="_blank" rel="noopener">www.youtube.com)，他會幫我們轉換成IP位置，能更方便的前往網站。</a></p>
+<h1 id="Port"><a href="#Port" class="headerlink" title="Port"></a>Port</h1><p>當我輸入 (<a href="http://www.youtube.com)，透過DNS轉換成IP位置，除了`127.0.0.3`，後面還有一個`port" target="_blank" rel="noopener">www.youtube.com)，透過DNS轉換成IP位置，除了`127.0.0.3`，後面還有一個`port</a> 80<code>，完整體長這樣</code>127.0.0.3:80`。</p>
+<p><img src="https://raw.githubusercontent.com/rccj/images/master/blog/ip-dns-port-03.jpg" alt="Port"><br>就像是我今天去銀行(IP)，不同的窗口負責不同的業務(Port)，我們需要到對應的窗口，才能得到預期的服務。</p>
+<p>輸入<code>127.0.0.3:80</code>順利得到youtube的網頁，<code>127.0.0.3:996</code>可能不會有東西，一般來說還是會自動導向。<br>| Port Number | 服務  |<br>| :———: | :—: |<br>|     80      | HTTP  |<br>|     20      |  FTP  |<br>|     53      |  DNS  |<br>|     443     | HTTPS |</p>
+<p>(常見的Port)</p>
+<p><a href="https://zh.wikipedia.org/wiki/TCP/UDP%E7%AB%AF%E5%8F%A3%E5%88%97%E8%A1%A8" target="_blank" rel="noopener">點這看更多:TCP/UDP埠列表</a></p>
+]]></content>
+      <categories>
+        <category>Web</category>
+      </categories>
+      <tags>
+        <tag>HTTP</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MongoDB安裝</title>
     <url>/2021/12/19/mongodb-install/</url>
     <content><![CDATA[<p><font color=white size=3 face="微软雅黑">被你發現了＠＠</font></p>
@@ -30,7 +102,7 @@
 <h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><p><a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/" target="_blank" rel="noopener">Install MongoDB Community Edition on macOS</a><br><a href="https://www.uj5u.com/shujuku/32643.html" target="_blank" rel="noopener">MongoDB 不在開源，Homebrew 安裝只能玩社區版</a><br><a href="https://pjchender.dev/database/mongo-install/" target="_blank" rel="noopener">MongoDB 安裝</a><br><a href="https://www.796t.com/post/MzR6aWs=.html" target="_blank" rel="noopener">mongo和mongod有什麼實際區別？</a><br><a href="https://stackoverflow.com/questions/39988477/why-does-the-mongo-shell-work-without-mongod-server-being-explicitly-run" target="_blank" rel="noopener">Why does the mongo shell work without mongod server being explicitly run?</a><br><a href="https://docs.mongodb.com/guides/server/install/" target="_blank" rel="noopener">官網文件</a><br><a href="https://coolmandiary.blogspot.com/2021/01/mongodb.html" target="_blank" rel="noopener">MongoDB教學(一)_下載安裝_基礎指令</a><br><a href="https://www.modb.pro/db/99941" target="_blank" rel="noopener">Windows下MongoDB的安装和使用</a></p>
 ]]></content>
       <categories>
-        <category>mongodb</category>
+        <category>Mongodb</category>
       </categories>
       <tags>
         <tag>筆記</tag>
@@ -96,11 +168,11 @@
 <h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><p><a href="https://dylan237.github.io/what-is-nodejs.html" target="_blank" rel="noopener">Dylan’s Blog: 認識Node.js</a><br><a href="https://progressbar.tw/posts/291" target="_blank" rel="noopener">進度條編輯群: Node.js 是什麼？</a><br><a href="https://zh.wikipedia.org/wiki/Node.js" target="_blank" rel="noopener">Wikipedia: Node.js</a><br><a href="https://www.happycoding.today/posts/43" target="_blank" rel="noopener">HappyCoding: BOM和DOM筆記</a></p>
 ]]></content>
       <categories>
-        <category>nodejs</category>
+        <category>Nodejs</category>
       </categories>
       <tags>
         <tag>JavaScript</tag>
-        <tag>nodejs</tag>
+        <tag>Nodejs</tag>
       </tags>
   </entry>
   <entry>
@@ -582,7 +654,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Item      | Price  | Number | Total| Remark</span><br><span class="line">----------|:------:|:------:| ------|------:|</span><br><span class="line">egg       | 10     |  2    |    20 | good   |</span><br><span class="line">meat      | 100    |  2    |   200 | 		-		|</span><br><span class="line">vegetable | 50     |  5    |   250 |		-		|</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;  : 符號控制靠左或靠右</span><br></pre></td></tr></table></figure>
+<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Item      | Price  | Number | Total| Remark</span><br><span class="line">----------|:------:|:------:| ------|------:|</span><br><span class="line">egg       | 10     |  2    |    20 | good   |</span><br><span class="line">meat      | 100    |  2    |   200 |   -	|</span><br><span class="line">vegetable | 50     |  5    |   250 |   -	|</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;  : 符號控制靠左或靠右</span><br></pre></td></tr></table></figure>
 
 <table>
 <thead>
